@@ -18,7 +18,7 @@ const NavBar = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="navbar-collapse collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <div className="navbar-nav">
           <NavLink className="nav-item nav-link" to="/movies">
             Movies
@@ -28,6 +28,9 @@ const NavBar = () => {
           </NavLink>
           <NavLink className="nav-item nav-link" to="/rentals">
             Rentals
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/login">
+            Login
           </NavLink>
         </div>
       </div>

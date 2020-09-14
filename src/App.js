@@ -6,6 +6,7 @@ import Customers from "./components/customer";
 import NotFound from "./components/notFound";
 import Rentals from "./components/rentals";
 import NavBar from "./components/common/navBar";
+import LoginForm from "./components/login";
 
 class App extends Component {
   state = {};
@@ -15,6 +16,7 @@ class App extends Component {
         <NavBar />
         <main role="main" className="container mt-2">
           <Switch>
+            <Route path="/login" component={LoginForm} />
             <Route path="/movies/:id" component={MovieForm} />
             <Route path="/movies" component={Movies}></Route>
             <Route path="/customers" component={Customers}></Route>
