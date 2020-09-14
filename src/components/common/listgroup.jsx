@@ -18,7 +18,7 @@ const ListGroup = (props) => {
               ? "list-group-item active"
               : "list-group-item"
           }
-          key={item[valueProperty]}
+          key={item[valueProperty] || item.name}
           onClick={() => onItemSelect(item)}
           style={{ cursor: "pointer" }}
         >
