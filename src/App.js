@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Movies from "./components/movies";
 import MovieForm from "./components/movieForm";
 import Customers from "./components/customer";
@@ -9,11 +10,14 @@ import NavBar from "./components/common/navBar";
 import LoginForm from "./components/login";
 import RegisterForm from "./components/register";
 
+import "react-toastify/dist/ReactToastify.css";
+
 class App extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <NavBar />
         <main role="main" className="container mt-2">
           <Switch>

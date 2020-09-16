@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { getMovies } from "./../services/fakeMovieService";
-import { getGenres } from "./../services/fakeGenreService";
+import { deleteMovie, getMovies } from "./../services/movieService";
+import { getGenres } from "./../services/genreService";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listgroup";
 import { paginate } from "../utils/paginate";
@@ -21,14 +22,25 @@ class Movies extends Component {
     searchQuery: "",
   };
 
-  componentDidMount() {
-    const genres = [{ name: "All Genres" }, ...getGenres()];
-    this.setState({ movies: getMovies(), genres });
+  async componentDidMount() {
+    const { data: genreList } = await getGenres();
+    const { data: movieList } = await getMovies();
+    const genres = [{ name: "All Genres" }, ...genreList];
+    this.setState({ movies: movieList, genres });
   }
 
-  handleDelete = (movieId) => {
+  handleDelete = async (movieId) => {
+    const originalMovies = this.state.movies;
     let movies = this.state.movies.filter((movie) => movie._id !== movieId);
     this.setState({ movies: movies });
+    try {
+      const { data } = await deleteMovie(movieId);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) {
+        toast.error("This movie has already been deleted");
+      }
+      this.setState({ movies: originalMovies });
+    }
   };
 
   handleLikeToggle = (movie) => {

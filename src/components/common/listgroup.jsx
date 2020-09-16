@@ -8,7 +8,7 @@ const ListGroup = (props) => {
     onItemSelect,
     selectedGenre,
   } = props;
-  console.log(items);
+
   return (
     <ul className="list-group">
       {items.map((item) => (
