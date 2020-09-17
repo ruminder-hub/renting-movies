@@ -58,7 +58,6 @@ class Form extends Component {
     if (errors) {
       return;
     }
-    console.log("Submitting");
     this.doSubmit();
   };
 
